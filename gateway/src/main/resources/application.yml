@@ -1,0 +1,22 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: product
+              uri: http://localhost:8900
+              predicates:
+                - Path=/products,/products/**
+            - id: inventory
+              uri: http://localhost:8901
+              predicates:
+                - Path=/inventory,/inventory/**
+            - id: order
+              uri: http://localhost:8902
+              predicates:
+                - Path=/order,/order/**

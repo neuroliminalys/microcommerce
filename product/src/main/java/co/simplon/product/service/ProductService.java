@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import co.simplon.product.client.InventoryClient;
 import co.simplon.product.entity.Product;
 import co.simplon.product.repository.ProductRepository;
 

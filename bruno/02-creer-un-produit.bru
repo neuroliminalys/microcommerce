@@ -1,0 +1,28 @@
+meta {
+  name: Créer un produit
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/books
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Un produit de test",
+    "category": "test",
+    "description": "Lorem ipsum dolor sit amet [...]"
+  }
+}
+
+assert {
+  res.status: eq 200
+  res.body.id: isString
+}
+
+docs {
+  Copie le champ id de la réponse, puis renseigne la variable de collection productId avant de consulter le stock.
+}

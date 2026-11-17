@@ -9,5 +9,5 @@ import co.simplon.inventory.entity.Inventory;
 
 public interface InventoryRepository extends JpaRepository<Inventory, UUID> {
 
-    public Optional<Inventory> findByBookId(UUID bookId);
+    public Optional<Inventory> findByProductId(UUID productId);
 }

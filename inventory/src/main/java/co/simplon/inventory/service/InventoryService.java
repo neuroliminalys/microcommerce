@@ -17,19 +17,19 @@ public class InventoryService {
         this.inventoryRepository = inventoryRepository;
     }
 
-    public Inventory createInventory(UUID bookId, int initialQuantity) {
-        Inventory inventory = new Inventory(null, bookId, initialQuantity);
+    public Inventory createInventory(UUID productId, int initialQuantity) {
+        Inventory inventory = new Inventory(null, productId, initialQuantity);
         return inventoryRepository.save(inventory);
     }
 
-    public Optional<Integer> getStockByBookId(UUID bookId) {
-        return inventoryRepository.findByBookId(bookId)
+    public Optional<Integer> getStockByBookId(UUID productId) {
+        return inventoryRepository.findByProductId(productId)
                 .map(Inventory::getStockQuantity);
     }
 
-    public void updateStock(UUID bookId, int newQuantity) {
-        Inventory inventory = inventoryRepository.findByBookId(bookId)
-                .orElseThrow(() -> new IllegalArgumentException("Inventory not found for Book ID: " + bookId));
+    public void updateStock(UUID productId, int newQuantity) {
+        Inventory inventory = inventoryRepository.findByProductId(productId)
+                .orElseThrow(() -> new IllegalArgumentException("Inventory not found for Book ID: " + productId));
 
         inventory.setStockQuantity(newQuantity);
 

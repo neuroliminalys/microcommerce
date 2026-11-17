@@ -1,0 +1,19 @@
+meta {
+  name: Modifier le stock
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/inventory/{{productId}}?newQuantity=5
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Fixe le stock du produit sélectionné à 5.
+}

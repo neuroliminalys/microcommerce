@@ -1,0 +1,10 @@
+vars:pre-request {
+  baseUrl: http://localhost:8080
+  productId: A_REMPLACER
+}
+
+docs {
+  Envoie les requêtes une par une, dans l'ordre.
+  Après « Créer un produit », copie le champ id de la réponse, puis remplace A_REMPLACER par cette valeur dans la variable de collection productId.
+  Les trois dernières requêtes utilisent cet identifiant. Aucun script ne le récupère automatiquement.
+}

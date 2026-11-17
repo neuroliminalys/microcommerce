@@ -1,0 +1,20 @@
+meta {
+  name: Vérifier le stock modifié
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/inventory/{{productId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body: eq 5
+}
+
+docs {
+  Vérifie que le stock du même livre vaut maintenant 5.
+}

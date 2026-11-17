@@ -29,30 +29,30 @@ public class InventoryController {
         this.inventoryService = inventoryService;
     }
 
-    @PostMapping("/{bookId}")
-    public Inventory initializeInventory(@PathVariable UUID bookId,
+    @PostMapping("/{productId}")
+    public Inventory initializeInventory(@PathVariable UUID productId,
             @RequestParam(defaultValue = "0") int initialQuantity) {
-        Inventory inventory = inventoryService.createInventory(bookId, initialQuantity);
+        Inventory inventory = inventoryService.createInventory(productId, initialQuantity);
 
-        logger.info("Inventory created for Book ID: " + bookId + " with quantity: " + initialQuantity);
+        logger.info("Inventory created for Product ID: " + productId + " with quantity: " + initialQuantity);
 
         return inventory;
     }
 
-    @GetMapping("/{bookId}")
-    public ResponseEntity<Integer> getStock(@PathVariable UUID bookId) {
-        return inventoryService.getStockByBookId(bookId)
+    @GetMapping("/{productId}")
+    public ResponseEntity<Integer> getStock(@PathVariable UUID productId) {
+        return inventoryService.getStockByBookId(productId)
                 .map(stock -> ResponseEntity.ok(stock))
                 .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));
     }
 
-    @PutMapping("/{bookId}")
-    public ResponseEntity<String> updateStock(@PathVariable UUID bookId,
+    @PutMapping("/{productId}")
+    public ResponseEntity<String> updateStock(@PathVariable UUID productId,
             @RequestParam int newQuantity) {
         // Appelle le service pour mettre à jour le stock
-        inventoryService.updateStock(bookId, newQuantity);
+        inventoryService.updateStock(productId, newQuantity);
 
         // Retourne une réponse indiquant que la mise à jour a réussi
-        return ResponseEntity.ok("Stock updated for Book ID: " + bookId + " with new quantity: " + newQuantity);
+        return ResponseEntity.ok("Stock updated for Product ID: " + productId + " with new quantity: " + newQuantity);
     }
 }

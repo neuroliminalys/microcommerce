@@ -1,0 +1,20 @@
+meta {
+  name: Vérifier le stock initial
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/inventory/{{productId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body: eq 0
+}
+
+docs {
+  Utilise le productId que tu as saisi dans les variables de collection. Le stock du nouveau produit doit être à 0.
+}
