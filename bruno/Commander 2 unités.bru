@@ -1,0 +1,30 @@
+meta {
+  name: Commander 2 unités
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/orders
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "productId": "{{productId}}",
+    "quantity": 2
+  }
+}
+
+body:xml {
+  {
+    productId: {{productId}}
+    quantity: 2
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

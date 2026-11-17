@@ -1,0 +1,23 @@
+meta {
+  name: Commander plus que disponible
+  type: http
+  seq: 7
+}
+
+post {
+  url: http://localhost:8080/orders
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "productId": "{{productId}}",
+    "quantity": 4
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

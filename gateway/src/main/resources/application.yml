@@ -19,4 +19,4 @@ spring:
             - id: order
               uri: http://localhost:8902
               predicates:
-                - Path=/order,/order/**
+                - Path=/orders,/orders/**
